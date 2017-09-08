@@ -132,7 +132,7 @@ class QrCodeComponent extends Component
     {
         $this->qrCode = (new QrCode($this->text, $this->errorCorrectionLevel, $this->writer))
             ->setSize(($this->size ?: 300))
-            ->setMargin(($this->margin ?: 10))
+            ->setMargin((is_null($this->margin) ? 10: $this->margin))
             ->useEncoding(($this->encoding ?: 'UTF-8'));
 
         $this->qrCode = $this->logoPath ? $this->qrCode->useLogo($this->logoPath) : $this->qrCode;
